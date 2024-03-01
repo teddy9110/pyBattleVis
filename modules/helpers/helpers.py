@@ -5,14 +5,15 @@ import time
 
 logger = setup_logging()
 
-def get_kills_from_br(zkill_link: str)
-    zkill_api_link = 'https://zkillboard.com/api/'
-    split_br_link(zkill_link)
-    
+def get_kills_from_br(zkill_link: str):
+    logger.info(f"Getting zkill data for BR, waiting 1.1 seconds to avoid rate limiting")
+    time.sleep(1.1)
+    zkill_br_response = requests.get('https://zkillboard.com/api/' + split_br_link(zkill_link))
+    zkill_data = json.loads(zkill_br_response.text)
     return []
 
-def split_br_link(zkill_link: str) 
-    split_url = url.split('/')
+def split_br_link(zkill_link: str): 
+    split_url = zkill_link.split('/')
     related_link = '/'.join(split_url[3:6])
     return related_link
 def get_zkill_id_from_link(zkill_link: str) -> str:
