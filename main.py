@@ -1,9 +1,11 @@
 from modules.helpers.helpers import get_zkill_id_from_link
+from modules.helpers.helpers import get_kills_from_br
 from modules.controllers.kill_data_controllers import get_zkill_and_esi_data, create_wreck_from_killData, scale_wreck
 from modules.models.killdata import KillData
 from modules.graphics.graphics_engine import GraphicsEngine
 from modules.graphics.model import Fish, Cat, Cube
 
+zkill_battle_report_link= 'https://zkillboard.com/related/31002205/202402282300'
 zkill_link_list = ['https://zkillboard.com/kill/107761136/',
                    'https://zkillboard.com/kill/107761119/',
                    'https://zkillboard.com/kill/107760928/',
@@ -13,7 +15,7 @@ zkill_link_list = ['https://zkillboard.com/kill/107761136/',
 
 def main() -> None:
     wreck_list = []
-
+    zkill_link_list = get_kills_from_br(zkill_battle_report_link)
     for zkill_link in zkill_link_list:
         zkill_id = get_zkill_id_from_link(zkill_link)
         zkill_data, esi_data = get_zkill_and_esi_data(zkill_id)

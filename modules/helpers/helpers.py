@@ -5,7 +5,16 @@ import time
 
 logger = setup_logging()
 
+def get_kills_from_br(zkill_link: str)
+    zkill_api_link = 'https://zkillboard.com/api/'
+    split_br_link(zkill_link)
+    
+    return []
 
+def split_br_link(zkill_link: str) 
+    split_url = url.split('/')
+    related_link = '/'.join(split_url[3:6])
+    return related_link
 def get_zkill_id_from_link(zkill_link: str) -> str:
     return zkill_link.split('/')[-2]
 
